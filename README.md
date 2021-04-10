@@ -22,3 +22,17 @@ This project uses convolutional neural networks to analyze a sudoku image and co
         ```zsh
         python3 -m pip install --user virtualenv
         ```  
+3. Now create and activate the virtual environment
+    ```bash
+    venv Sudoku
+    ```
+    - For Windows
+        ```bash
+        venv Sudoku
+        cd Sudoku\Scripts
+        activate
+        ```
+    - For macOS and Linux
+      ```zsh
+      source Sudoku/bin/activate
+      ```
