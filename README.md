@@ -17,8 +17,8 @@ This project uses convolutional neural networks to analyze a sudoku image and co
     - You can do this using a terminal and type :
       >  '''
         py -m pip install --user virtualenv
-        '''
+        '''bash
     - For macOS and Linux:
-       > '''
+       > '''zsh
         python3 -m pip install --user virtualenv
         '''
