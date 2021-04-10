@@ -15,10 +15,10 @@ This project uses convolutional neural networks to analyze a sudoku image and co
 1. Download and install Python3 from [this link](https://www.python.org/downloads/)
 2. Install [venv](https://pypi.org/project/virtualenv/) to create a virtual environment for the project.
     - You can do this using a terminal and type :
-      >  '''
+      >  '''bash
         py -m pip install --user virtualenv
-        '''bash
+        '''
     - For macOS and Linux:
-       > '''zsh
+       > '''bash
         python3 -m pip install --user virtualenv
         '''
