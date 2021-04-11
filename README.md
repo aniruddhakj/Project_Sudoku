@@ -28,7 +28,6 @@ This project uses convolutional neural networks to analyze a sudoku image and co
     ```
     - For Windows
         ```bash
-        venv Sudoku
         cd Sudoku\Scripts
         activate
         ```
