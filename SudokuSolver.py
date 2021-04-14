@@ -1,8 +1,9 @@
 from operator import attrgetter
 
-
 class Solver:
+    '''This is the class which contains the main algorithm to solve the puzzle based on the digits obtained through the model'''
     def checkvalidpuzzle(self, arr):
+        '''Checks if the obtained number orientation in the puzzle fulfils the criteria for being a valid Sudoku image'''
         subsquarestartingpoints = [[0, 0], [0, 3], [0, 6], [3, 0], [3, 3], [3, 6], [6, 0], [6, 3], [6, 6]]
         # Checking row validity of every row
         for row in range(9):
@@ -35,6 +36,8 @@ class Solver:
         return True
 
     def print_board(self, arr):
+        '''Prints the digits obtained after preprocessing inside the respective cells. 
+        If cell is empty, fills it with a space character.'''
         for i in range(9):
             for j in range(9):
                 if arr[i][j]==0:

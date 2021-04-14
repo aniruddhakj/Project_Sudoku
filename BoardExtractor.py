@@ -1,11 +1,11 @@
-'''This class takes an image path as input, performs preprocessing, identifies the
-grid, crops the grid, corrects perspective, writes all these stages to PuzzleStages folder and
-finally slices the grid into 81 cells and returns the 2D array of 81 cell images'''
 import cv2 as cv
 import os
 import numpy as np
 
 class BoardExtractor:
+'''This class takes an image path as input, performs preprocessing, identifies the
+grid, crops the grid, corrects perspective, writes all these stages to PuzzleStages folder and
+finally slices the grid into 81 cells and returns the 2D array of 81 cell images'''
 
     def __init__(self, imagepath):
         '''Initializes the Class'''
@@ -51,10 +51,10 @@ class BoardExtractor:
             pass
         cv.imwrite("PuzzleStages/4.jpg", gray)
 
-    '''This function finds the grid (the biggest blob), uses Hough transform to find lines,
-    fuses related lines, finds the border lines of the grid, warps the board to correct
-    perspective and stores the board in self.extractedgrid'''
     def detect_and_crop_grid(self):
+        '''This function finds the grid (the biggest blob), uses Hough transform to find lines,
+        fuses related lines, finds the border lines of the grid, warps the board to correct
+        perspective and stores the board in self.extractedgrid'''
 
         #Using flood filling to find the biggest blob in the picture
         outerbox = self.image
@@ -126,9 +126,9 @@ class BoardExtractor:
             pass
         cv.imwrite("PuzzleStages/8.jpg", tmpimg)
 
-        '''This function takes a list of lines and an image, fuses related a.k.a close
-        lines and returns the modified list of lines'''
         def mergeLines(lines, img):
+            '''This function takes a list of lines and an image, fuses related a.k.a close
+            lines and returns the modified list of lines'''
             height, width = np.shape(img)
             for current in lines:
                 if current[0][0] is None and current[0][1] is None:
@@ -300,29 +300,24 @@ class BoardExtractor:
         # Intersection of left and top
         
         detTopLeft = leftA * topB - leftB * topA
-
         ptTopLeft = ((topB * leftC - leftB * topC) / detTopLeft, (leftA * topC - topA * leftC) / detTopLeft)
 
         # Intersection of top and right
         
         detTopRight = rightA * topB - rightB * topA
-
         ptTopRight = ((topB * rightC - rightB * topC) / detTopRight, (rightA * topC - topA * rightC) / detTopRight)
 
         # Intersection of right and bottom
         
         detBottomRight = rightA * bottomB - rightB * bottomA
-
-        ptBottomRight = ((bottomB * rightC - rightB * bottomC) / detBottomRight, (rightA * bottomC - bottomA * rightC) / detBottomRight)
+        ptBottomRight = ((bottomB * rightC - rightB * bottomC)/detBottomRight, (rightA * bottomC - bottomA * rightC)/detBottomRight)
 
         # Intersection of bottom and left
         
         detBottomLeft = leftA * bottomB - leftB * bottomA
+        ptBottomLeft = ((bottomB * leftC - leftB * bottomC) / detBottomLeft, (leftA * bottomC - bottomA * leftC) / detBottomLeft)
 
-        ptBottomLeft = ((bottomB * leftC - leftB * bottomC) / detBottomLeft,
-                               (leftA * bottomC - bottomA * leftC) / detBottomLeft)
-
-        # Plotting the found extreme points
+        # Plotting the found corner points
         cv.circle(tmppp, (int(ptTopLeft[0]), int(ptTopLeft[1])), 5, 0, -1)
         cv.circle(tmppp, (int(ptTopRight[0]), int(ptTopRight[1])), 5, 0, -1)
         cv.circle(tmppp, (int(ptBottomLeft[0]), int(ptBottomLeft[1])), 5, 0, -1)
@@ -379,6 +374,7 @@ class BoardExtractor:
         except:
             pass
         cv.imwrite("PuzzleStages/12.jpg", grid)
+        
         #Creating a vector of size 81 of all the cell images
         tempgrid = []
         for i in range(celledge, edge+1, celledge):
@@ -386,7 +382,7 @@ class BoardExtractor:
                 rows = grid[i-celledge:i]
                 tempgrid.append([rows[k][j-celledge:j] for k in range(len(rows))])
 
-        #Creating the 9X9 grid of images
+        #Creating the 9X9 grid of Sudoku cells
         finalSudoku = []
         for i in range(0, len(tempgrid)-8, 9):
             finalSudoku.append(tempgrid[i:i+9])
@@ -404,5 +400,4 @@ class BoardExtractor:
         for i in range(9):
             for j in range(9):
                 cv.imwrite(str("BoardCells/cell"+str(i)+str(j)+".jpg"), finalSudoku[i][j])
-
         return finalSudoku

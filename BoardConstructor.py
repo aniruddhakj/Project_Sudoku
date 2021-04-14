@@ -1,27 +1,26 @@
-'''
-This Class takes a 2D 9X9 array of processed cell images, recognises each cell's entry and
-returns the final detected grid. Before sending each grid cell image to the model for prediction,
-it is first determined if the grid cell has any number or not by adding up all the pixels and
-comparing with some threshold. Some empty cells might be missed due to remaining white patches
-'''
 import cv2
 import numpy as np
 from DigitRecognizer import DigitRecognizer
 import os
 
 class ConstructGrid:
-
+    '''
+    This Class takes a 2D 9X9 array of processed cell images, recognises each cell's entry and
+    returns the final detected grid. Before sending each grid cell image to the model for prediction,
+    it is first determined if the grid cell has any number or not by adding up all the pixels and
+    comparing with some threshold. Some empty cells might be missed due to remaining white patches
+    '''
     def __init__(self, cellarray, modeltype):
         self.cellarray = cellarray
         self.recognizer = DigitRecognizer(modeltype)
         self.finalgrid = [[0 for i in range(9)] for j in range(9)]
         self.imagewritten = False
 
-    '''This function uses a threshold of 5 white pixels to determine if a grid cell is empty.
-    If the grid cell isn't empty, the prediction of the KNN is used to determine the number.
-    This function writes the 13th stage image to PuzzleStages and 
-    finally returns the final grid of predicted numbers'''
     def constructgrid(self):
+        '''This function uses a threshold of 5 white pixels to determine if a grid cell is empty.
+        If the grid cell isn't empty, the prediction of the KNN is used to determine the number.
+        This function writes the 13th image to PuzzleStages and 
+        finally returns the final grid of predicted numbers'''
         threshold = 5*255
         for i in range(9):
             for j in range(9):
