@@ -1,4 +1,4 @@
-# Project_Sudoku
+# AI Sudoku
 
 ![GitHub](https://img.shields.io/github/license/aniruddhakj/Project_Sudoku?color=ff0000&logo=Github)
 ![GitHub followers](https://img.shields.io/github/followers/aniruddhakj?style=social)
