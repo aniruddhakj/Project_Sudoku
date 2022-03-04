@@ -9,6 +9,7 @@ This project uses convolutional neural networks to analyze a sudoku image and co
 
 ## Index
 [Getting Started](https://github.com/aniruddhakj/Project_Sudoku/blob/main/README.md#getting-started)
+[Running the App](https://github.com/aniruddhakj/Project_Sudoku/blob/main/README.md#running-the-app)
 
 
 ## Getting Started
@@ -40,3 +41,16 @@ This project uses convolutional neural networks to analyze a sudoku image and co
     pip3 install -r requirements.txt
     ```
     - For Apple Silicon/ M-series Mac users, please check out Apple's Tensorflow Metal [installation guide](https://developer.apple.com/metal/tensorflow-plugin/)
+
+## Running the App
+* Before running the App in itself, you can switch the model type between CNN and KNN.
+    ```python3
+    from UI import UI
+    from ConvNet import CNN
+    from KNN import KNN
+    import os
+    # Change the model type variable value to "CNN" to use the Convolutional Neural Network
+    # Change the model type variable value to "KNN" to use the K Nearest Neighbours Classifier
+    modeltype = "CNN"
+    ```
+
