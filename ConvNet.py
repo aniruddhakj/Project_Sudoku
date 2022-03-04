@@ -52,8 +52,9 @@ class CNN:
         # Loading the Train/Test data
         (x_train, y_train), (x_test, y_test) = mnist.load_data()
         x_train = x_train.reshape(x_train.shape[0], 28, 28, 1)
-
+        x_test = x_test.reshape(x_test.shape[0], 28, 28, 1)
         # Reshape to form a 3D Vector
+        print(len(x_train), len(x_test))
         x_test = x_test.reshape(x_test.shape[0], 28, 28, 1)
 
         # Normalize the train/test dataset
@@ -64,9 +65,6 @@ class CNN:
 
         # Evaluate the model
         test_loss, test_acc = self.model.evaluate(x=x_test, y=y_test)
-        
-        # Print out the model accuracy
-        print('\nTest accuracy:', test_acc)
         self.modeltrained = True
 
     def save_model(self):

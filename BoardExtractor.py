@@ -3,9 +3,9 @@ import os
 import numpy as np
 
 class BoardExtractor:
-'''This class takes an image path as input, performs preprocessing, identifies the
-grid, crops the grid, corrects perspective, writes all these stages to PuzzleStages folder and
-finally slices the grid into 81 cells and returns the 2D array of 81 cell images'''
+    '''This class takes an image path as input, performs preprocessing, identifies the
+    grid, crops the grid, corrects perspective, writes all these stages to PuzzleStages folder and
+    finally slices the grid into 81 cells and returns the 2D array of 81 cell images'''
 
     def __init__(self, imagepath):
         '''Initializes the Class'''

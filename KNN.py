@@ -37,12 +37,12 @@ class KNN:
         test_data: the data/targets used to test the classifier
         stored_data: the data/targets used to classify the test_data
         """
-        sixty_x, sixty_y = self.mk_dataset(60000)
-        test_img = [self.data[i] for i in self.indx[60000:70000]]
+        fifty_x, fifty_y = self.mk_dataset(50000)
+        test_img = [self.data[i] for i in self.indx[50000:70000]]
         test_img1 = np.array(test_img)
-        test_target = [self.target[i] for i in self.indx[60000:70000]]
+        test_target = [self.target[i] for i in self.indx[50000:70000]]
         test_target1 = np.array(test_target)
-        self.classifier.fit(sixty_x, sixty_y)
+        self.classifier.fit(fifty_x, fifty_y)
 
         y_pred = self.classifier.predict(test_img1)
         pickle.dump(self.classifier, open('knn.sav', 'wb'))
