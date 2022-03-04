@@ -35,3 +35,8 @@ This project uses convolutional neural networks to analyze a sudoku image and co
       ```zsh
       source Sudoku/bin/activate
       ```
+4. Clone the repo, install the required modules using requirements.txt
+     ```zsh
+    pip3 install -r requirements.txt
+    ```
+    - For Apple Silicon/ M-series Mac users, please check out Apple's Tensorflow Metal [installation guide](https://developer.apple.com/metal/tensorflow-plugin/)
