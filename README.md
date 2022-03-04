@@ -54,6 +54,6 @@ This project uses convolutional neural networks to analyze a sudoku image and co
     modeltype = "CNN"
     ```
 * Head Over and run Start.py in a python script. Ensure internet connectivity before the first run, as it downloads the MNIST dataset and saves the model as "knn.sav" or "cnn.hdf5" depending upon the modeltype variable.
-    ```python3
+    ```zsh
     python3 Start.py
     ```
